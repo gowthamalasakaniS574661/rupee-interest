@@ -1,32 +1,34 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Rupee Interest Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Simple and futuristic Rupee Interest Calculator. Supports ₹1 to ₹10 rates, custom percentages, and both Simple & Compound interest.">
+  <meta name="keywords" content="rupee interest calculator, interest in rupees, simple interest, compound interest, children calculator, ₹1 interest calculator, rupee learning tool">
+  <meta name="author" content="RupeeInterests.com">
+  <meta name="robots" content="index, follow">
   <style>
     body {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      margin: 0;
+      padding: 20px;
       font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: #00ffe7;
       text-align: center;
-      padding: 30px;
-    }
-    .ad-top, .ad-bottom {
-      margin: 20px auto;
-      padding: 15px;
-      background: #08252f;
-      border: 1px dashed #00ffe7;
-      color: #00ffe7;
     }
     h1 {
-      font-size: 2.5em;
+      font-size: 2em;
+      margin-bottom: 20px;
       text-shadow: 0 0 10px #00ffe7;
     }
     input, select, button {
-      font-size: 18px;
-      padding: 10px;
-      margin: 10px;
-      width: 250px;
+      width: 100%;
+      max-width: 300px;
+      font-size: 1em;
+      padding: 12px;
+      margin: 10px auto;
+      display: block;
       border: 1px solid #00ffe7;
       background: #101d25;
       color: #00ffe7;
@@ -36,22 +38,32 @@
       background-color: #00ffe7;
       color: #000;
       font-weight: bold;
-      width: 270px;
       box-shadow: 0 0 10px #00ffe7;
     }
     .result {
-      font-size: 20px;
+      font-size: 1.1em;
       margin-top: 20px;
-      color: #a0fffb;
+      color: #a0fdfd;
+    }
+    .ad-top, .ad-bottom {
+      margin: 20px 0;
+      padding: 10px;
+      background: #08252f;
+      border: 1px dashed #00ffe7;
+      color: #00ffe7;
     }
     .footer {
-      margin-top: 50px;
-      font-size: 14px;
-      color: #cccccc;
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #ccc;
     }
     .footer a {
       color: #00ffe7;
       text-decoration: none;
+      margin: 0 8px;
+    }
+    .footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -65,12 +77,10 @@
   <h1>Rupee Interest Calculator</h1>
 
   <input type="number" id="amount" placeholder="Enter total amount (₹)">
-  <br>
 
-  <label>Interest Rate Mode:</label><br>
+  <label>Interest Rate Mode:</label>
   <input type="radio" name="mode" value="custom" checked onchange="toggleMode()"> Custom %
   <input type="radio" name="mode" value="rupee" onchange="toggleMode()"> ₹1 = 12%, ₹2 = 24%...
-  <br>
 
   <div id="customSection">
     <input type="number" id="customRate" placeholder="Enter custom interest rate (%)">
@@ -86,30 +96,32 @@
     </select>
   </div>
 
-  <label>Interest Type:</label><br>
+  <label>Interest Type:</label>
   <select id="interestType">
     <option value="simple">Simple Interest</option>
     <option value="compound">Compound Interest</option>
   </select>
-  <br>
 
   <label>Start Date:</label>
-  <input type="date" id="startDate"><br>
+  <input type="date" id="startDate">
 
   <label>End Date:</label>
-  <input type="date" id="endDate"><br>
+  <input type="date" id="endDate">
 
   <button onclick="calculateInterest()">CALCULATE</button>
 
   <div class="result" id="output"></div>
 
   <div class="ad-bottom">
-    <!-- Replace with your AdSense code -->
+    <!-- Replace with my AdSense code -->
     <strong>Bottom Ad Placeholder</strong>
   </div>
 
   <div class="footer">
-    <p>© 2025 RupeeInterests.com • <a href="privacy.html">Privacy Policy</a></p>
+    © 2025 RupeeInterests.com • 
+    <a href="about.html">About</a> • 
+    <a href="contact.html">Contact</a> • 
+    <a href="privacy.html">Privacy Policy</a>
   </div>
 
   <script>
@@ -123,7 +135,7 @@
       const amount = parseFloat(document.getElementById('amount').value);
       const startDate = new Date(document.getElementById('startDate').value);
       const endDate = new Date(document.getElementById('endDate').value);
-      const mode = document.querySelector('input[name="mode"]:checked').value;
+      const mode = document.querySelector('input[name="mode"]:checked").value;
       const type = document.getElementById('interestType').value;
 
       if (isNaN(amount) || !startDate || !endDate || endDate <= startDate) {
@@ -168,4 +180,5 @@
 
 </body>
 </html>
+
 
