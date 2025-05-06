@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rupee Interest Calculator</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      font-family: 'Segoe UI', sans-serif;
+      color: #00ffe7;
+      text-align: center;
+      padding: 30px;
+    }
+    .ad-top {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #08252f;
+      border: 1px dashed #00ffe7;
+      color: #00ffe7;
+    }
+    h1 {
+      font-size: 2.5em;
+      text-shadow: 0 0 10px #00ffe7;
+    }
+    input, select, button {
+      font-size: 18px;
+      padding: 10px;
+      margin: 10px;
+      width: 250px;
+      border: 1px solid #00ffe7;
+      background: #101d25;
+      color: #00ffe7;
+      border-radius: 10px;
+    }
+    button {
+      background-color: #00ffe7;
+      color: #000;
+      font-weight: bold;
+      width: 270px;
+      box-shadow: 0 0 10px #00ffe7;
+    }
+    .result {
+      font-size: 20px;
+      margin-top: 20px;
+      color: #a0fffb;
+    }
+    .ad-bottom {
+      margin-top: 30px;
+      padding: 15px;
+      background: #08252f;
+      border: 1px dashed #00ffe7;
+      color: #00ffe7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ad section on top -->
+  <div class="ad-top">
+    <!-- Replace with your AdSense code -->
+    <strong>Ad Banner (Top)</strong>
+  </div>
+
+  <h1>Rupee Interest Calculator</h1>
+
+  <input type="number" id="amount" placeholder="Enter total amount (₹)">
+  <br>
+
+  <label>Interest Rate Mode:</label><br>
+  <input type="radio" name="mode" value="custom" checked onchange="toggleMode()"> Custom %
+  <input type="radio" name="mode" value="rupee" onchange="toggleMode()"> ₹1 = 12%, ₹2 = 24%...
+  <br>
+
+  <div id="customSection">
+    <input type="number" id="customRate" placeholder="Enter custom interest rate (%)">
+  </div>
+
+  <div id="rupeeSection" style="display: none;">
+    <select id="rupeeRate">
+      <script>
+        for (let i = 1; i <= 10; i++) {
+          document.write(`<option value="${i}">₹${i} = ${12 * i}%</option>`);
+        }
+      </script>
+    </select>
+  </div>
+
+  <label>Interest Type:</label><br>
+  <select id="interestType">
+    <option value="simple">Simple Interest</option>
+    <option value="compound">Compound Interest</option>
+  </select>
+  <br>
+
+  <label>Start Date:</label>
+  <input type="date" id="startDate"><br>
+
+  <label>End Date:</label>
+  <input type="date" id="endDate"><br>
+
+  <button onclick="calculateInterest()">CALCULATE</button>
+
+  <div class="result" id="output"></div>
+
+  <!-- Ad section on bottom -->
+  <div class="ad-bottom">
+    <!-- Replace with your AdSense code -->
+    <strong>Ad Banner (Bottom)</strong>
+  </div>
+
+  <script>
+    function toggleMode() {
+      const mode = document.querySelector('input[name="mode"]:checked').value;
+      document.getElementById('customSection').style.display = mode === 'custom' ? 'block' : 'none';
+      document.getElementById('rupeeSection').style.display = mode === 'rupee' ? 'block' : 'none';
+    }
+
+    function calculateInterest() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      const startDate = new Date(document.getElementById('startDate').value);
+      const endDate = new Date(document.getElementById('endDate').value);
+      const mode = document.querySelector('input[name="mode"]:checked').value;
+      const type = document.getElementById('interestType').value;
+
+      if (isNaN(amount) || !startDate || !endDate || endDate <= startDate) {
+        document.getElementById('output').innerHTML = "❌ Please enter valid inputs.";
+        return;
+      }
+
+      const days = (endDate - startDate) / (1000 * 3600 * 24);
+      const years = days / 365;
+      let rate = 0;
+
+      if (mode === 'custom') {
+        rate = parseFloat(document.getElementById('customRate').value);
+        if (isNaN(rate)) {
+          document.getElementById('output').innerHTML = "❌ Enter a valid custom rate.";
+          return;
+        }
+      } else {
+        const rupeeModel = parseInt(document.getElementById('rupeeRate').value);
+        rate = rupeeModel * 12;
+      }
+
+      let interest = 0;
+      let total = 0;
+
+      if (type === 'simple') {
+        interest = (amount * rate * years) / 100;
+        total = amount + interest;
+      } else {
+        total = amount * Math.pow((1 + rate / 100), years);
+        interest = total - amount;
+      }
+
+      document.getElementById('output').innerHTML =
+        `Interest Type: ${type === 'simple' ? 'Simple' : 'Compound'}<br>` +
+        `Rate: ${rate}%<br>` +
+        `Duration: ${days.toFixed(0)} days<br>` +
+        `Interest: ₹${interest.toFixed(2)}<br>` +
+        `Total Amount to Pay: ₹${total.toFixed(2)}`;
+    }
+  </script>
+
+</body>
+</html>
