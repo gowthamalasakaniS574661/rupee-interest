@@ -83,7 +83,10 @@
     <strong>Top Ad Placeholder</strong>
   </div>
 
-  <img src="logo.png" alt="Rupee Interest Logo" style="max-width: 150px; margin-bottom: 10px;">
+  <picture>
+    <source srcset="logo.webp" type="image/webp">
+    <img src="logo.png" alt="Rupee Interest Logo" width="150" height="150" style="max-width: 150px; margin-bottom: 10px;">
+  </picture>
   <h1>Rupee Interest Calculator</h1>
 
   <label for="amount">Total Amount (₹):</label>
@@ -100,13 +103,18 @@
 
   <div id="rupeeSection" style="display: none;">
     <label for="rupeeRate">Select ₹-based Interest</label>
-    <select id="rupeeRate" name="rupeeRate">
-      <script>
+    <select id="rupeeRate" name="rupeeRate"></select>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const rupeeSelect = document.getElementById("rupeeRate");
         for (let i = 1; i <= 10; i++) {
-          document.write(`<option value="${i}">₹${i} = ${12 * i}%</option>`);
+          const opt = document.createElement("option");
+          opt.value = i;
+          opt.textContent = `₹${i} = ${12 * i}%`;
+          rupeeSelect.appendChild(opt);
         }
-      </script>
-    </select>
+      });
+    </script>
   </div>
 
   <label for="interestType">Interest Type:</label>
