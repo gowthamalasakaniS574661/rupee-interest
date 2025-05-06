@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us - RupeeInterests.com</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #00ffe7;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px #00ffe7;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      text-shadow: 0 0 10px #00ffe7;
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #a0fdfd;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #00ffe7;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      background: #0d1b2a;
+      border: 1px solid #00ffe7;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #00ffe7;
+      color: #000;
+      border: none;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffe7;
+    }
+    button:hover {
+      background: #00e6d8;
+    }
+    .note {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #aaa;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p>If you have questions, suggestions, or feedback about RupeeInterests.com, we'd love to hear from you. Just email us directly or use the form below.</p>
+
+    <label for="name">Your Name</label>
+    <input type="text" id="name" placeholder="Enter your name" disabled>
+
+    <label for="email">Your Email</label>
+    <input type="email" id="email" placeholder="Enter your email" disabled>
+
+    <label for="message">Message</label>
+    <textarea id="message" rows="5" placeholder="Type your message here..." disabled></textarea>
+
+    <button disabled>Send Message</button>
+
+    <div class="note">
+      This form is for design only. Please contact us at <strong><a href="mailto:admin@rupeeinterests.com" style="color:#00ffe7;">admin@rupeeinterests.com</a></strong>
+    </div>
+  </div>
+</body>
+</html>
