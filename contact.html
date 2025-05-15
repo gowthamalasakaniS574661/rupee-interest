@@ -5,17 +5,52 @@
   <title>Contact - Rupee Interest</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; color: #333; }
-    h1 { color: #0f2027; }
-    input, textarea { width: 100%; padding: 10px; margin: 10px 0; }
-    button { padding: 10px 20px; background: #0f2027; color: #fff; border: none; cursor: pointer; }
+    body {
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #00ffe7;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h1 {
+      color: #00ffe7;
+      text-shadow: 0 0 10px #00ffe7;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background: #101d25;
+      border: 1px solid #00ffe7;
+      color: #00ffe7;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #00ffe7;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    p {
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-  <h1>Contact Us</h1>
-  <p>If you have any questions, suggestions, or feedback, feel free to reach out to us at:</p>
+  <header>
+    <h1>Contact Us</h1>
+  </header>
+  <p>If you have any questions, feedback, or suggestions, you can reach out to:</p>
   <p><strong>Email:</strong> support@rupeeinterests.com</p>
-  <p>Or use the form below (placeholder, not functional):</p>
   <form>
     <input type="text" placeholder="Your Name" required>
     <input type="email" placeholder="Your Email" required>
@@ -24,3 +59,4 @@
   </form>
 </body>
 </html>
+
