@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Rupee Interest Calculator</title>
   <link rel="icon" type="image/png" href="logo.png">
-  <!-- ✅ AdSense verification -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3354253221580068"
           crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,12 +56,14 @@
       margin-top: 20px;
       color: #a0fdfd;
     }
-    .ad-top, .ad-bottom {
-      margin: 20px 0;
-      padding: 10px;
-      background: #08252f;
+    .ad-box {
+      margin: 25px auto;
+      padding: 12px;
+      max-width: 320px;
+      background: #00151e;
       border: 1px dashed #00ffe7;
       color: #00ffe7;
+      font-size: 0.9em;
     }
     .footer {
       margin-top: 40px;
@@ -81,64 +82,60 @@
 </head>
 <body>
 
-  <div class="ad-top">
-    <!-- Replace this with your real AdSense ad slot -->
-    <strong>Top Ad Placeholder</strong>
+  <header>
+    <picture>
+      <source srcset="logo.webp" type="image/webp">
+      <img src="logo.png" alt="Rupee Interest Logo" width="150" height="150" style="max-width: 150px; margin-bottom: 10px;">
+    </picture>
+    <h1>Rupee Interest Calculator</h1>
+    <p>Calculate interest using Rupee-based models or custom rates. Supports both simple and compound interest calculations.</p>
+  </header>
+
+  <div class="ad-box">
+    <!-- AdSense Ad -->
+    <strong>Sponsored:</strong><br>
+    [Ad will appear here]
   </div>
 
-  <picture>
-    <source srcset="logo.webp" type="image/webp">
-    <img src="logo.png" alt="Rupee Interest Logo" width="150" height="150" style="max-width: 150px; margin-bottom: 10px;">
-  </picture>
-  <h1>Rupee Interest Calculator</h1>
+  <main>
+    <label for="amount">Total Amount (₹):</label>
+    <input type="number" id="amount" placeholder="e.g. 5000">
 
-  <label for="amount">Total Amount (₹):</label>
-  <input type="number" id="amount" name="amount" placeholder="e.g. 5000">
+    <label>Interest Rate Mode:</label>
+    <input type="radio" name="mode" value="custom" checked onchange="toggleMode()"> Custom %
+    <input type="radio" name="mode" value="rupee" onchange="toggleMode()"> ₹1 = 12%, ₹2 = 24%...
 
-  <label>Interest Rate Mode:</label>
-  <input type="radio" name="mode" value="custom" checked onchange="toggleMode()"> Custom %
-  <input type="radio" name="mode" value="rupee" onchange="toggleMode()"> ₹1 = 12%, ₹2 = 24%...
+    <div id="customSection">
+      <label for="customRate">Custom Interest Rate (%):</label>
+      <input type="number" id="customRate" placeholder="e.g. 12">
+    </div>
 
-  <div id="customSection">
-    <label for="customRate">Custom Interest Rate (%):</label>
-    <input type="number" id="customRate" name="customRate" placeholder="e.g. 12">
-  </div>
+    <div id="rupeeSection" style="display: none;">
+      <label for="rupeeRate">Select ₹-based Interest</label>
+      <select id="rupeeRate"></select>
+    </div>
 
-  <div id="rupeeSection" style="display: none;">
-    <label for="rupeeRate">Select ₹-based Interest</label>
-    <select id="rupeeRate" name="rupeeRate"></select>
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const rupeeSelect = document.getElementById("rupeeRate");
-        for (let i = 1; i <= 10; i++) {
-          const opt = document.createElement("option");
-          opt.value = i;
-          opt.textContent = `₹${i} = ${12 * i}%`;
-          rupeeSelect.appendChild(opt);
-        }
-      });
-    </script>
-  </div>
+    <label for="interestType">Interest Type:</label>
+    <select id="interestType">
+      <option value="simple">Simple Interest</option>
+      <option value="compound">Compound Interest</option>
+    </select>
 
-  <label for="interestType">Interest Type:</label>
-  <select id="interestType" name="interestType">
-    <option value="simple">Simple Interest</option>
-    <option value="compound">Compound Interest</option>
-  </select>
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate">
 
-  <label for="startDate">Start Date:</label>
-  <input type="date" id="startDate" name="startDate">
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate">
 
-  <label for="endDate">End Date:</label>
-  <input type="date" id="endDate" name="endDate">
+    <button onclick="calculateInterest()">CALCULATE</button>
 
-  <button onclick="calculateInterest()">CALCULATE</button>
+    <div class="result" id="output"></div>
+  </main>
 
-  <div class="result" id="output"></div>
-
-  <div class="ad-bottom">
-    <!-- Replace this with your real AdSense ad slot -->
-    <strong>Bottom Ad Placeholder</strong>
+  <div class="ad-box">
+    <!-- AdSense Ad -->
+    <strong>Relevant Offer:</strong><br>
+    [Ad will appear here]
   </div>
 
   <div class="footer">
@@ -149,6 +146,16 @@
   </div>
 
   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const rupeeSelect = document.getElementById("rupeeRate");
+      for (let i = 1; i <= 10; i++) {
+        const opt = document.createElement("option");
+        opt.value = i;
+        opt.textContent = `₹${i} = ${12 * i}%`;
+        rupeeSelect.appendChild(opt);
+      }
+    });
+
     function toggleMode() {
       const mode = document.querySelector('input[name="mode"]:checked').value;
       document.getElementById('customSection').style.display = mode === 'custom' ? 'block' : 'none';
